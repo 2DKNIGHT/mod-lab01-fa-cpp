@@ -39,13 +39,13 @@ unsigned int faStr2(const char *str) {
             isLetter = true;
             if (str[i] >= 'A' && str[i] <= 'Z' && !isFirst) {
                 isFirst = true;
-            } else if (str[i] < 'a' || str[i] > 'z') {
-                fakeWord = true;
-            } else {
+            } else if (isFirst) {
                 fakeWord = true;
             }
-        }
-        else if (str[i] == ' ') {
+            if ((str[i] < 'a' || str[i] > 'z') && fakeWord) {
+                fakeWord = true;
+            }
+        } else if (str[i] == ' ') {
             if (isLetter && isFirst && !fakeWord) {
                 wordCount++;
             }
@@ -69,9 +69,10 @@ unsigned int faStr3(const char *str) {
                 isLetter = true;
                 wordCount++;
             }
-        }
-        else if (str[i] == ' ') {
-            if (isLetter) isLetter = false;
+        } else if (str[i] == ' ') {
+            if (isLetter) {
+                isLetter = false;
+            }
         }
     }
     avgSumWord = round(sumLetter / wordCount);
