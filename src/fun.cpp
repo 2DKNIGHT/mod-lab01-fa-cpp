@@ -39,10 +39,9 @@ unsigned int faStr2(const char *str) {
             isLetter = true;
             if (str[i] >= 'A' && str[i] <= 'Z' && !isFirst) {
                 isFirst = true;
-            } else if (isFirst) {
+            } else if (str[i] >= 'A' && str[i] <= 'Z' && isFirst) {
                 fakeWord = true;
-            }
-            if ((str[i] < 'a' || str[i] > 'z') && fakeWord) {
+            } else if ((str[i] < 'a' || str[i] > 'z') && !fakeWord) {
                 fakeWord = true;
             }
         } else if (str[i] == ' ') {
