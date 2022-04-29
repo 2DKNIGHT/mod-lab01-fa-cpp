@@ -11,21 +11,18 @@ unsigned int faStr1(const char *str) {
     for (int i = 0; i < strlen(str); i++) {
         if (str[i] != ' ' && !isLetter) {
             isLetter = true;
-        }
-        else if (str[i] >= '0' && str[i] <= '9') {
+        } else if (str[i] >= '0' && str[i] <= '9') {
             isNumber = true;
         }
         if (str[i] == ' ' && isLetter && !isNumber) {
             isLetter = false;
             wordCount++;
-        }
-        else if (str[i] == ' ' && isLetter) {
+        } else if (str[i] == ' ' && isLetter) {
             isLetter = false;
             isNumber = false;
         }
     }
-    if (isLetter && !isNumber)
-    {
+    if (isLetter && !isNumber) {
         wordCount++;
     }
     return wordCount;
@@ -42,14 +39,14 @@ unsigned int faStr2(const char *str) {
             isLetter = true;
             if (str[i] >= 'A' && str[i] <= 'Z' && !isFirst) {
                 isFirst = true;
-            }
-            else if (str[i] < 'a' || str[i] > 'z') {
+            } else if (str[i] < 'a' || str[i] > 'z') {
+                fakeWord = true;
+            } else {
                 fakeWord = true;
             }
-            else fakeWord = true;
         }
         else if (str[i] == ' ') {
-            if(isLetter && isFirst) {
+            if (isLetter && isFirst && !fakeWord) {
                 wordCount++;
             }
             fakeWord = false;
@@ -68,7 +65,7 @@ unsigned int faStr3(const char *str) {
     for (int i = 0; i < strlen(str); i++) {
         if (str[i] != ' ') {
             sumLetter++;
-            if(!isLetter) {
+            if (!isLetter) {
                 isLetter = true;
                 wordCount++;
             }
