@@ -2,6 +2,7 @@
 #include "fun.h"
 #include <math.h>
 #include <iostream>
+#include <cstring>
 
 unsigned int faStr1(const char *str) {
     int wordCount = 0;
